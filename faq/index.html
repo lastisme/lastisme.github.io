@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link  href="/css/main.css" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/metro.min.js"></script>
+  <script src="/js/bignumber.js"></script>
+  <script src="/js/blockies.js"></script>
+  <script src="/js/web3.min.js"></script>
+  <script>
+    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0"  ];
+  </script>
+  <script src='/js/site.js'></script>
+</head>
+
+<body>
+
+  <div class="main-content clear-float padding20">
+
+    <h1><a href="/">Last is me!</a> <small>Faq</small></h1>
+    <br>
+    <div class="grid">
+      <div class="row ">
+        <div class="cell">
+
+          
+          <a href="#howitworks" class="nolink"><h2 id="howitworks">How does this work?</h2></a>
+          <hr class="bg-red">
+          <div>
+            "Last is me" is a lottery where the winner is the last player buying a ticket! Every square in the home page is a lottery with a duration and a ticket price as the title. If no one buy a ticket during the lottery duration the last one that did it, gets the jackpot! As easy as that!<br> In the square you can see also the Jackpot amount in dollars, an <a href="#howcountdown">approximate</a> countdown when the lottery expire, and the actual winner. The countdown is resetted if someone buy a ticket before the duration expires. The last winner is also updated accordingly.
+
+          </div>
+          <br><br>
+          
+          <a href="#areyourunningawy" class="nolink"><h2 id="areyourunningawy">Are you running away with the jackpot?</h2></a>
+          <hr class="bg-green">
+          <div>
+            Every lottery is a smart contract written on the <a href="http://ethereum.org">Ethereum</a> plaftform. Execution is granted by the network and the running program is verifiable and unchengable. In the lottery detail page there is a link to a third party site that verify the deployed code does exactly what we explain in this pages.
+
+          </div>
+          <br><br>
+          
+          <a href="#howbuy" class="nolink"><h2 id="howbuy">How to buy a ticket?</h2></a>
+          <hr class="bg-blue">
+          <div>
+            To buy a ticket you only need an Ether Wallet such as <a href="https://github.com/ethereum/mist/releases">Mist</a>. If you have a browser enabled or an eth client on you machine with rpc port at 8545 and an unlocked account, you can buy a ticket by simply pressing a button, however this is not required and if you feel more conforable you can just copy and paste the contract address (you can find it in the contract details) on your (light) wallet with the <a href="#extraether">right</a> amount and send the transaction.
+
+          </div>
+          <br><br>
+          
+          <a href="#doyouhavequestion" class="nolink"><h2 id="doyouhavequestion">Do you have a question not listed here?</h2></a>
+          <hr class="bg-red">
+          <div>
+            Add an issue on the github <a href="">repo</a> of the website
+
+          </div>
+          <br><br>
+          
+          <a href="#howcountdown" class="nolink"><h2 id="howcountdown">How the countdown is calculated?</h2></a>
+          <hr class="bg-green">
+          <div>
+            The countdown is an approximation of the lottery expiration. This is because under the hood the lottery duration is measured in number of blocks in the ethereum blockchain. This blocks are expected to be dicovered with an average time but they can occur with variance. For example even if the average time between blocks is 14 seconds in the last 1000 blocks, the next block can be found in the next second or in a couple minutes. The countdown is therefore calculated as the remaining blocks to lottery expiration multplicated by the average block time. The greater the number of remaining blocks, the more accurate is the approximation, viceversa the approximation could be misleading cause the mentioned variance.
+
+          </div>
+          <br><br>
+          
+          <a href="#whyblocknumber" class="nolink"><h2 id="whyblocknumber">Why using number of blocks instead of block timestamp as duration?</h2></a>
+          <hr class="bg-blue">
+          <div>
+            The timestamp is a little tweakable by miners, to avoid this possible manipulation we decided to refer to the number of blocks.
+
+          </div>
+          <br><br>
+          
+          <a href="#stilldidntreceive" class="nolink"><h2 id="stilldidntreceive">I won but I didn't receive anything!</h2></a>
+          <hr class="bg-red">
+          <div>
+            Since the winner is found only when the lottery duration is expired, the jackpot is sent only when the first player of the new cycle buy a ticket. If you are the winner and you are in hurry you can buy the ticket yourself.
+
+          </div>
+          <br><br>
+          
+          <a href="#extraether" class="nolink"><h2 id="extraether">I accidentally send more ether than required to buy a ticket.</h2></a>
+          <hr class="bg-green">
+          <div>
+            Don't worry, the amount over the ticket price is sent back to you.
+
+          </div>
+          <br><br>
+          
+          <a href="#fees" class="nolink"><h2 id="fees">Fees</h2></a>
+          <hr class="bg-blue">
+          <div>
+            The fee of the house is just 1% actually. The lottery owner could change this but no more than 2% will ever be possible as you can see from the contract code. All the rest amount, at least 98%, will partecipate to the jackpot, at least 90% to the same lottery, at most 8% become jackpot of other "Last is me" lottery.
+
+          </div>
+          <br><br>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="align-center">
+    <a class="shortcut-button" href="..">
+      <span class="icon mif-home"></span>
+      <span class="title">Home</span>
+    </a>
+  </div>
+
+  <br><br><br><br><br><br>
+</div>
+
+</body>
+</html>
