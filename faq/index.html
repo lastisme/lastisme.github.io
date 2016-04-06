@@ -12,7 +12,15 @@
   <script src="/js/blockies.js"></script>
   <script src="/js/web3.min.js"></script>
   <script>
-    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0"  ];
+    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69"  ];
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64322985-7', 'auto');
+    ga('send', 'pageview');
   </script>
   <script src='/js/site.js'></script>
 </head>
@@ -25,115 +33,152 @@
     <br>
     <div class="grid">
       <div class="row ">
-        <div class="cell">
+        <div class="cell" style="line-height: 1.25rem; max-width: 800px">
 
           
           <a href="#howitworks" class="nolink"><h2 id="howitworks">How does this work?</h2></a>
-          <hr class="bg-red">
-          <br>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
           <div>
-            "Last is me" is a lottery where the winner is the last player buying a ticket! Every square in the home page is a lottery with a duration and a ticket price as the title. If no one buy a ticket during the lottery duration the last one that did it, gets the jackpot! As easy as that!<br> In the square you can see also the Jackpot amount in dollars, an <a href="#howcountdown">approximate</a> countdown when the lottery expire, and the actual winner. The countdown is resetted if someone buy a ticket before the duration expires. The last winner is also updated accordingly.
+            "Last is me" is a lottery where the winner is the last player buying a ticket! Every square in the home page is a lottery with a duration and a ticket price as the title. <strong>If no one buy a ticket throughout the lottery duration, the last one that did it gets the jackpot!</strong> As easy as that!<br> In the square you can see also the Jackpot amount in dollars, an <a href="#howcountdown">approximate</a> countdown when the lottery expire, and the actual winner. The countdown is resetted if someone buy a ticket before the duration expires. The last winner is also updated accordingly.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#areyourunningawy" class="nolink"><h2 id="areyourunningawy">Are you running away with the jackpot?</h2></a>
-          <hr class="bg-green">
-          <br>
+          <hr class="bg-green" style="margin-bottom:10px;">
+
           <div>
-            Every lottery is a smart contract written on the <a href="http://ethereum.org">Ethereum</a> plaftform. Execution is granted by the network and the running program is verifiable and unchengable. In the lottery detail page there is a link to a third party site that verify the deployed code does exactly what we explain in this pages.
+            Every lottery is a smart contract written on the <a href="http://ethereum.org">Ethereum</a> platform. Execution is granted by the network and the running program is verifiable and unchangeable. In the lottery detail page there is a link to a third party site (<a href="#launchgeth">example</a>) verifying the deployed code does exactly what we explain in this pages.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#howbuy" class="nolink"><h2 id="howbuy">How to buy a ticket?</h2></a>
-          <hr class="bg-blue">
-          <br>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
           <div>
-            To buy a ticket you only need an Ether Wallet such as <a href="https://github.com/ethereum/mist/releases">Mist</a>. If you have a browser enabled or an eth client on you machine with rpc port at 8545 and an unlocked account, you can buy a ticket by simply pressing a button, however this is not required and if you feel more conforable you can just copy and paste the contract address (you can find it in the contract details) on your (light) wallet with the <a href="#extraether">right</a> amount and send the transaction.
+            To buy a ticket you only need an Ether Wallet such as <a href="https://github.com/ethereum/mist/releases">Mist</a>.<br> If you have a browser enabled or an eth client on you machine with rpc port open at 8545 and account 0 unlocked (<a href="#launchgeth">example</a>), you can buy a ticket by simply pressing a button, however this is not required and if you feel more confortable you can just copy and paste the contract address (you can find it in the contract details) on your (light) wallet with the <a href="#extraether">right</a> amount and send the transaction.
 
           </div>
-          <br><br>
-          
-          <a href="#doyouhavequestion" class="nolink"><h2 id="doyouhavequestion">Do you have a question not listed here?</h2></a>
-          <hr class="bg-red">
           <br>
-          <div>
-            Add an issue on the github <a href="https://github.com/lastisme/lastisme.github.io/issues">repo</a> of the website
-
-          </div>
-          <br><br>
           
           <a href="#howcountdown" class="nolink"><h2 id="howcountdown">How the countdown is calculated?</h2></a>
-          <hr class="bg-green">
-          <br>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
           <div>
             The countdown is an approximation of the lottery expiration. This is because under the hood the lottery duration is measured in number of blocks in the ethereum blockchain. This blocks are expected to be dicovered with an average time but they can occur with variance. For example even if the average time between blocks is 14 seconds in the last 1000 blocks, the next block can be found in the next second or in a couple minutes. The countdown is therefore calculated as the remaining blocks to lottery expiration multplicated by the average block time. The greater the number of remaining blocks, the more accurate is the approximation, viceversa the approximation could be misleading cause the mentioned variance.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#whyblocknumber" class="nolink"><h2 id="whyblocknumber">Why using number of blocks instead of block timestamp as duration?</h2></a>
-          <hr class="bg-blue">
-          <br>
+          <hr class="bg-green" style="margin-bottom:10px;">
+
           <div>
             The timestamp is a little tweakable by miners, to avoid this possible manipulation we decided to refer to the number of blocks.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#stilldidntreceive" class="nolink"><h2 id="stilldidntreceive">I won but I didn't receive anything!</h2></a>
-          <hr class="bg-red">
-          <br>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
           <div>
             Since the winner is found only when the lottery duration is expired, the jackpot is sent only when the first player of the new cycle buy a ticket. If you are the winner and you are in hurry you can buy the ticket yourself.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#extraether" class="nolink"><h2 id="extraether">I accidentally send more ether than required to buy a ticket.</h2></a>
-          <hr class="bg-green">
-          <br>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
           <div>
             Don't worry, the amount over the ticket price is sent back to you.
 
           </div>
-          <br><br>
+          <br>
+          
+          <a href="#whatsfooter" class="nolink"><h2 id="whatsfooter">What are the strings at the end of the page?</h2></a>
+          <hr class="bg-green" style="margin-bottom:10px;">
+
+          <div>
+            They are the address of the server providing information for the lotteries. If you have a localhost provider running on port 8545, synced to the last block, it will be used. Otherwise it will be used an ethereum public node. The public node is used for your convenience but the best solution for privacy and speed is to use your own node.
+
+          </div>
+          <br>
           
           <a href="#whicwallet" class="nolink"><h2 id="whicwallet">I don't have an ether wallet, which one are ok for this service?</h2></a>
-          <hr class="bg-blue">
-          <br>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
           <div>
             We reccomend <a href="https://github.com/ethereum/mist/releases">Mist</a> as client wallet. If you don't want to download the blockchain on your pc we tested <a href="">Holytransaction</a> multi currency wallet and it works (but you are not in control of the private keys). We tested <a href="">Jaxx</a> and it cannot make a good estimation of the gas price at the time of writing. We tested <a href="">MyChromeEtherWallet</a> and it works only manually specifying the gasprice limit. If you want to suggest other wallet add an <a href="https://github.com/lastisme/lastisme.github.io/issues">issue</a> on github.
 
           </div>
-          <br><br>
+          <br>
           
           <a href="#gaslimit" class="nolink"><h2 id="gaslimit">I am manually forging the transaction which is the reccomended gas limit?</h2></a>
-          <hr class="bg-red">
-          <br>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
           <div>
-            We reccomend to use 200k as the gaslimit, however it usually requires much less. (The first transaction starting a new cycle in the lottery is the more expensive, about 150k)
+            We reccomend to use 200k as gaslimit, however it usually requires much less. The first transaction starting a new cycle in the lottery is the more expensive, about 150k. Usually it requires around 50k.
 
           </div>
-          <br><br>
+          <br>
+          
+          <a href="#notupdating" class="nolink"><h2 id="notupdating">When I buy a ticket it takes a while to update</h2></a>
+          <hr class="bg-green" style="margin-bottom:10px;">
+
+          <div>
+            The udate of the lottery depends on how Ethereum miners find blocks. Usually they takes 14 seconds but it depends and it is not upon us.
+
+          </div>
+          <br>
+          
+          <a href="#couldnotunlock" class="nolink"><h2 id="couldnotunlock">Could not unlock signer account</h2></a>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
+          <div>
+            This message means that you are trying to buy the ticket automatically but you haven't unlocked account 0. See <a href="#launchgeth">"How to launch geth?"</a>
+
+          </div>
+          <br>
+          
+          <a href="#launchgeth" class="nolink"><h2 id="launchgeth">How to launch geth?</h2></a>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely not mandatory and you can buy tickets copy & pasting the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
+
+          </div>
+          <br>
           
           <a href="#usinggeth" class="nolink"><h2 id="usinggeth">How to create the transaction from console? (using geth for example)</h2></a>
-          <hr class="bg-green">
-          <br>
+          <hr class="bg-green" style="margin-bottom:10px;">
+
           <div>
-            
+            For example for contract <span class="tag">0x2f47E750205249D3240E1E5be41b0069eEEF1067</span> <p class="bg-grayLighter padding20 breakword"> eth.sendTransaction({from: eth.accounts[0], to: '0x2f47E750205249D3240E1E5be41b0069eEEF1067', value: web3.toWei(10, 'finney'), gas:200000, gasPrice:20000000000 }); </p>
+
           </div>
-          <br><br>
+          <br>
           
           <a href="#fees" class="nolink"><h2 id="fees">Fees</h2></a>
-          <hr class="bg-blue">
-          <br>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
           <div>
             The fee of the house is just 1% actually. The lottery owner could change this but no more than 2% will ever be possible as you can see from the contract code. All the rest amount, at least 98%, will partecipate to the jackpot, at least 90% to the same lottery, at most 8% become jackpot of other "Last is me" lottery.
 
           </div>
-          <br><br>
+          <br>
+          
+          <a href="#doyouhavequestion" class="nolink"><h2 id="doyouhavequestion">Do you have a question not listed here?</h2></a>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            Add an issue on the github <a href="https://github.com/lastisme/lastisme.github.io/issues">repo</a> of the website
+
+          </div>
+          <br>
           
         </ul>
       </div>
