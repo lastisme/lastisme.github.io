@@ -12,8 +12,10 @@
   <script src="/js/blockies.js"></script>
   <script src="/js/web3.min.js"></script>
   <script>
-    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69"  ];
-
+    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69" ,  "0xa112A5BC7549453a1bFe40d810eD6f156427b43a"  ];
+  </script>
+  <script src='/js/site.js'></script>
+  <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -21,8 +23,11 @@
 
     ga('create', 'UA-64322985-7', 'auto');
     ga('send', 'pageview');
+    if(ref) {
+      ga('set','dimension1',ref);
+    }
   </script>
-  <script src='/js/site.js'></script>
+
 </head>
 
 <body>
@@ -58,25 +63,126 @@
           <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
-            To buy a ticket you only need an Ether Wallet such as <a href="https://github.com/ethereum/mist/releases">Mist</a>.<br> If you have a browser enabled or an eth client on you machine with rpc port open at 8545 and account 0 unlocked (<a href="#launchgeth">example</a>), you can buy a ticket by simply pressing a button, however this is not required and if you feel more confortable you can just copy and paste the contract address (you can find it in the contract details) on your (light) wallet with the <a href="#extraether">right</a> amount and send the transaction.
+            To buy a ticket you only need an Ether Wallet such as the ones listed in the <a href="#whicwallet">next</a> question.<br> If you have a browser enabled or an eth client on you machine with rpc port open at 8545 and account 0 unlocked (<a href="#launchgeth">example</a>), you can buy a ticket by simply pressing a button, however this is not required and if you feel more confortable you can just copy and paste the contract address (you can find it in the contract details) on your wallet with the ticket price as <a href="#extraether">amount</a> and send the transaction.
+
+          </div>
+          <br>
+          
+          <a href="#whicwallet" class="nolink"><h2 id="whicwallet">I don't have an ether wallet, which one are ok for this lottery?</h2></a>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            The following is a list of tested ethereum wallet. Dynamic gas or manually configured is required to buy ticket of "last is me" lottery.
+<table class="table" id="main_table_demo">
+    <thead>
+    <tr>
+        <th>Wallet</th>
+        <th>Type</th>
+        <th>Gas</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="https://github.com/ethereum/mist/releases">Mist</a></td>
+        <td>Local, Blockchain fast sync (1h)</td>
+        <td>Dynamic <span class="mif-checkmark fg-green"></span></td>
+    </tr>
+    <tr>
+        <td><a href="https://holytransaction.com/">HolyTransaction</a></td>
+        <td>On-line custodian</td>
+        <td>Dynamic <span class="mif-checkmark fg-green"></span></td>
+    </tr>
+    <tr>
+        <td><a href="https://www.myetherwallet.com/">MyEtherWallet</a></td>
+        <td>Light wallet</td>
+        <td><a href="#gaslimit">Manual</a> <span class="mif-checkmark fg-orange"></td>
+    </tr>
+    <tr>
+        <td><a href="http://jaxx.io/">Jaxx</a></td>
+        <td>Light wallet</td>
+        <td><a href="#gaslimit">Manual</a>, high gas price <span class="mif-checkmark fg-orange"> </td>
+    </tr>
+
+    </tbody>
+</table>
+If you want to suggest other wallets add an <a href="https://github.com/lastisme/lastisme.github.io/issues">issue</a> on github.
 
           </div>
           <br>
           
           <a href="#howcountdown" class="nolink"><h2 id="howcountdown">How the countdown is calculated?</h2></a>
-          <hr class="bg-red" style="margin-bottom:10px;">
+          <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            The countdown is an approximation of the lottery expiration. This is because under the hood the lottery duration is measured in number of blocks in the ethereum blockchain. This blocks are expected to be dicovered with an average time but they can occur with variance. For example even if the average time between blocks is 14 seconds in the last 1000 blocks, the next block can be found in the next second or in a couple minutes. The countdown is therefore calculated as the remaining blocks to lottery expiration multplicated by the average block time. The greater the number of remaining blocks, the more accurate is the approximation, viceversa the approximation could be misleading cause the mentioned variance.
+            The countdown is an approximation of the lottery expiration. This is because under the hood the lottery duration is measured in number of blocks in the ethereum blockchain. This blocks are expected to be discovered with an average time but they can occur with variance. For example even if the average time between blocks is 14 seconds in the last 1000 blocks, the next block can be found in the next second or in a couple minutes. The countdown is therefore calculated as the remaining blocks to lottery expiration multplicated by the average block time. The greater the number of remaining blocks, the more accurate is the approximation, viceversa the approximation could be misleading cause the mentioned variance. Consider variance as a matter of luck :)
 
           </div>
           <br>
           
           <a href="#whyblocknumber" class="nolink"><h2 id="whyblocknumber">Why using number of blocks instead of block timestamp as duration?</h2></a>
+          <hr class="bg-blue" style="margin-bottom:10px;">
+
+          <div>
+            The block timestamp could be <a href="http://ethereum.stackexchange.com/questions/413/can-a-contract-safely-rely-on-block-timestamp">manipulated</a> by miners, to avoid this possible manipulation we decided to refer to the number of blocks.
+
+          </div>
+          <br>
+          
+          <a href="#whynotbitcoin" class="nolink"><h2 id="whynotbitcoin">Why didn't you accept bitcoin?</h2></a>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            We would like to accept bitcoin but we couldn't find a way to do it in a completely trustless manner. You can use one of the ether wallet listed <a href="#whichwallet">here</a> and exchanges listed <a href="#etherexchanges">here</a> to get ether from bitcoins.
+
+          </div>
+          <br>
+          
+          <a href="#etherexchanges" class="nolink"><h2 id="etherexchanges">Where can I find ether?</h2></a>
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            The timestamp is a little tweakable by miners, to avoid this possible manipulation we decided to refer to the number of blocks.
+            You could get ether from the following exchanges:
+<table class="table" id="main_table_demo">
+    <thead>
+    <tr>
+        <th>Exchange</th>
+        <th>Fiat</th>
+        <th>Crypto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="https://shapeshift.io/">Shapeshift</a> (registration not required)</td>
+        <td><span class="mif-cross fg-red"></span></td>
+        <td>bitcoin & others</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.kraken.com/">Kraken</a></td>
+        <td>USD, EUR</td>
+        <td>bitcoin</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.therocktrading.com/">The Rock Trading</a></td>
+        <td>USD, EUR</td>
+        <td>bitcoin</td>
+    </tr>
+    <tr>
+        <td><a href="https://poloniex.com/">Poloniex</a></td>
+        <td>USD</td>
+        <td>bitcoin & others</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.bitfinex.com/">Bitfinex</a></td>
+        <td>USD</td>
+        <td>bitcoin, litecoin</td>
+    </tr>
+    <tr>
+        <td><a href="https://gatecoin.com/">Gatecoin</a></td>
+        <td>EUR</td>
+        <td>bitcoin</td>
+    </tr>
+    </tbody>
+</table>
 
           </div>
           <br>
@@ -99,20 +205,20 @@
           </div>
           <br>
           
-          <a href="#whatsfooter" class="nolink"><h2 id="whatsfooter">What are the strings at the end of the page?</h2></a>
+          <a href="#referral" class="nolink"><h2 id="referral">Do you have any referral program?</h2></a>
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            They are the address of the server providing information for the lotteries. If you have a localhost provider running on port 8545, synced to the last block, it will be used. Otherwise it will be used an ethereum public node. The public node is used for your convenience but the best solution for privacy and speed is to use your own node.
+            Sure we have! Just share the link with <i>#&lt;your address&gt;</i> such as <i>http://lastis.me/#0xCA9dC3F33d0e1C3975300D1DcdF114B9e9c305e8</i> <br> The address is stored in the player's browser as a cookie. Then every time the player buy a ticket with a local client the house fee is shared 50% with the referrer. If the user pay the contract directly we can't share the fee with the referrer. You can also embed the lottery in your own site calling the <i>buyTicket</i> function of the contract with your own address, this way the site's owner get the referral fee for every bought ticket.
 
           </div>
           <br>
           
-          <a href="#whicwallet" class="nolink"><h2 id="whicwallet">I don't have an ether wallet, which one are ok for this service?</h2></a>
+          <a href="#whatsfooter" class="nolink"><h2 id="whatsfooter">What are the strings at the end of the page?</h2></a>
           <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
-            We reccomend <a href="https://github.com/ethereum/mist/releases">Mist</a> as client wallet. If you don't want to download the blockchain on your pc we tested <a href="">Holytransaction</a> multi currency wallet and it works (but you are not in control of the private keys). We tested <a href="">Jaxx</a> and it cannot make a good estimation of the gas price at the time of writing. We tested <a href="">MyChromeEtherWallet</a> and it works only manually specifying the gasprice limit. If you want to suggest other wallet add an <a href="https://github.com/lastisme/lastisme.github.io/issues">issue</a> on github.
+            They are the address of the server providing information for the lotteries. If you have a localhost provider running on port 8545, synced to the last block, it will be used. Otherwise it will be used an ethereum public node. The public node is used for your convenience but the best solution for privacy and speed is to use your own node.
 
           </div>
           <br>
@@ -148,7 +254,7 @@
           <hr class="bg-red" style="margin-bottom:10px;">
 
           <div>
-            <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely not mandatory and you can buy tickets copy & pasting the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
+            <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely <strong>not mandatory</strong> and you can buy tickets copy & pasting the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
 
           </div>
           <br>
@@ -162,20 +268,29 @@
           </div>
           <br>
           
-          <a href="#fees" class="nolink"><h2 id="fees">Fees</h2></a>
+          <a href="#exchangewallet" class="nolink"><h2 id="exchangewallet">Can I use a wallet provided by an Exchange?</h2></a>
           <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
-            The fee of the house is just 1% actually. The lottery owner could change this but no more than 2% will ever be possible as you can see from the contract code. All the rest amount, at least 98%, will partecipate to the jackpot, at least 90% to the same lottery, at most 8% become jackpot of other "Last is me" lottery.
+            <strong>Absolutely not!</strong><br> Since we are using the sender address to pay back the jackpot in case of winning you have to be sure to be in control of the sender address! Use one of the wallet listed <a href="#whicwallet">here</a>.
+
+          </div>
+          <br>
+          
+          <a href="#fees" class="nolink"><h2 id="fees">Fees</h2></a>
+          <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            The fee of the house is 1% actually. The first player restarting the lottery does not pay the house fee. The lottery owner could change the fee but no more than 2% will ever be possible as you can see from the contract code. All the rest amount, at least 98%, will partecipate to the jackpot, at least 90% to the same lottery, at most 8% could become jackpot of other "Last is me" lottery.
 
           </div>
           <br>
           
           <a href="#doyouhavequestion" class="nolink"><h2 id="doyouhavequestion">Do you have a question not listed here?</h2></a>
-          <hr class="bg-red" style="margin-bottom:10px;">
+          <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            Add an issue on the github <a href="https://github.com/lastisme/lastisme.github.io/issues">repo</a> of the website
+            Add an issue on the github <a href="https://github.com/lastisme/lastisme.github.io/issues">repo</a> of the website or tweet our <a href="http://twitter.com/thelastisme">account</a>.
 
           </div>
           <br>
