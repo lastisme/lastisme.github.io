@@ -12,7 +12,7 @@
   <script src="/js/blockies.js"></script>
   <script src="/js/web3.min.js"></script>
   <script>
-    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69" ,  "0xa112A5BC7549453a1bFe40d810eD6f156427b43a"  ];
+    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69" ,  "0xa112A5BC7549453a1bFe40d810eD6f156427b43a" ,  "0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" ,  "0x414cc06490d1570517250B4c064129872c95CA99"  ];
   </script>
   <script src='/js/site.js'></script>
   <script>
@@ -341,6 +341,158 @@
             </table>
 
             <a href="http://etherscan.io/address/0xa112A5BC7549453a1bFe40d810eD6f156427b43a#code">verified code</a>
+          </div>
+
+        
+        <div class="tile-large bg-pink fg-white" data-role="tile"  onclick="showDialog('0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1')">
+          <div class="align-center">
+
+            <br>
+            <div>
+              <h4 class="opacity7"><span id="blockstime0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
+                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" class="v-align-bottom"></span>
+              </h4>
+              <h1>
+                <span class="icon mif-dollar2 v-align-bottom"></span>
+                <span class="v-align-bottom" id="jackpot0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span>
+              </h1>
+              <br>
+              <div id="countdown0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" class="countdown" data-background-color="ribbed-orange">
+              </div>
+              <br>
+              <br>
+              <div class="identicon" style="margin-left: 123px;" id="identicon0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></div>
+              <h4><span id="winner0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span></h4>
+            </div>
+          </div>
+          </div>
+
+
+          <div data-role="dialog" class="padding20 dialog" id="dialog0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-pink" data-color="fg-white" >
+            <h2 class="opacity7"><span id="pblockstime0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span> ( <span id="pblocks0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span> )</h2>
+            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span> ( Ξ <span id="petherprice0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span> )</h2>
+
+            <h3>
+              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
+              <span class="v-align-bottom" id="pjackpot0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"> </span> /
+              Ξ <span class="v-align-bottom" id="pjackpotether0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"</span>
+            </h3>
+            <br>
+            <div id="pcountdown0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" class="countdown" data-background-color="ribbed-orange">
+            </div>
+            <br>
+            <div class="padding10"> <!-- hideiflocal -->
+              <div class="identicon" style="float:left" data-address="0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></div>
+              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" ></span> ether to:</div>
+              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp; <span class="tag">0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1<span></div>
+
+            </div>
+            <div class="padding10 hideifremote">
+              <div style="margin-left:84px; margin-top:10px;">
+                <span>Or press the button</span>&nbsp;&nbsp;
+                <button class="button bg-orange fg-white" onclick="buy('0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1')">Buy ticket ( Ξ <span id="petherprice20x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></span> ) </button>
+              </div>
+            </div>
+            <!--
+            <div class="padding10 hideifremote">
+              <div class="identicon" style="float:left" data-address="0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1"></div>
+
+              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1</div>
+            </div>
+            -->
+
+            <br>
+            <table class="table" id="main_table_demo">
+              <thead>
+                <tr>
+                  <th class="fg-white">Date</th>
+                  <th class="fg-white">Winner</th>
+                  <th class="fg-white align-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="ptablebody0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1">
+
+
+              </tbody>
+            </table>
+
+            <a href="http://etherscan.io/address/0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1#code">verified code</a>
+          </div>
+
+        
+        <div class="tile-large bg-darkGreen fg-white" data-role="tile"  onclick="showDialog('0x414cc06490d1570517250B4c064129872c95CA99')">
+          <div class="align-center">
+
+            <br>
+            <div>
+              <h4 class="opacity7"><span id="blockstime0x414cc06490d1570517250B4c064129872c95CA99" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
+                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x414cc06490d1570517250B4c064129872c95CA99" class="v-align-bottom"></span>
+              </h4>
+              <h1>
+                <span class="icon mif-dollar2 v-align-bottom"></span>
+                <span class="v-align-bottom" id="jackpot0x414cc06490d1570517250B4c064129872c95CA99"></span>
+              </h1>
+              <br>
+              <div id="countdown0x414cc06490d1570517250B4c064129872c95CA99" class="countdown" data-background-color="ribbed-red">
+              </div>
+              <br>
+              <br>
+              <div class="identicon" style="margin-left: 123px;" id="identicon0x414cc06490d1570517250B4c064129872c95CA99"></div>
+              <h4><span id="winner0x414cc06490d1570517250B4c064129872c95CA99"></span></h4>
+            </div>
+          </div>
+          </div>
+
+
+          <div data-role="dialog" class="padding20 dialog" id="dialog0x414cc06490d1570517250B4c064129872c95CA99"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-darkGreen" data-color="fg-white" >
+            <h2 class="opacity7"><span id="pblockstime0x414cc06490d1570517250B4c064129872c95CA99"></span> ( <span id="pblocks0x414cc06490d1570517250B4c064129872c95CA99"></span> )</h2>
+            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x414cc06490d1570517250B4c064129872c95CA99"></span> ( Ξ <span id="petherprice0x414cc06490d1570517250B4c064129872c95CA99"></span> )</h2>
+
+            <h3>
+              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
+              <span class="v-align-bottom" id="pjackpot0x414cc06490d1570517250B4c064129872c95CA99"> </span> /
+              Ξ <span class="v-align-bottom" id="pjackpotether0x414cc06490d1570517250B4c064129872c95CA99"</span>
+            </h3>
+            <br>
+            <div id="pcountdown0x414cc06490d1570517250B4c064129872c95CA99" class="countdown" data-background-color="ribbed-red">
+            </div>
+            <br>
+            <div class="padding10"> <!-- hideiflocal -->
+              <div class="identicon" style="float:left" data-address="0x414cc06490d1570517250B4c064129872c95CA99"></div>
+              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x414cc06490d1570517250B4c064129872c95CA99" ></span> ether to:</div>
+              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp; <span class="tag">0x414cc06490d1570517250B4c064129872c95CA99<span></div>
+
+            </div>
+            <div class="padding10 hideifremote">
+              <div style="margin-left:84px; margin-top:10px;">
+                <span>Or press the button</span>&nbsp;&nbsp;
+                <button class="button bg-red fg-white" onclick="buy('0x414cc06490d1570517250B4c064129872c95CA99')">Buy ticket ( Ξ <span id="petherprice20x414cc06490d1570517250B4c064129872c95CA99"></span> ) </button>
+              </div>
+            </div>
+            <!--
+            <div class="padding10 hideifremote">
+              <div class="identicon" style="float:left" data-address="0x414cc06490d1570517250B4c064129872c95CA99"></div>
+
+              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x414cc06490d1570517250B4c064129872c95CA99</div>
+            </div>
+            -->
+
+            <br>
+            <table class="table" id="main_table_demo">
+              <thead>
+                <tr>
+                  <th class="fg-white">Date</th>
+                  <th class="fg-white">Winner</th>
+                  <th class="fg-white align-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="ptablebody0x414cc06490d1570517250B4c064129872c95CA99">
+
+
+              </tbody>
+            </table>
+
+            <a href="http://etherscan.io/address/0x414cc06490d1570517250B4c064129872c95CA99#code">verified code</a>
           </div>
 
         
