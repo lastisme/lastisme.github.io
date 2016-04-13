@@ -12,7 +12,7 @@
   <script src="/js/blockies.js"></script>
   <script src="/js/web3.min.js"></script>
   <script>
-    var MY_CONTRACTS=[ "0x2f47E750205249D3240E1E5be41b0069eEEF1067" ,  "0x40CAf50e03ae135C55cd28232E1a5dCD5D8502d0" ,  "0x2a12F9E090063FEA41CE3b12fC528Ba1d9dAda69" ,  "0xa112A5BC7549453a1bFe40d810eD6f156427b43a" ,  "0x43A61a52B3DabaADa9a108aB95b0F327008FBcE1" ,  "0x414cc06490d1570517250B4c064129872c95CA99"  ];
+    var MY_CONTRACTS=[ "0x84dA883d038A04a2D53Dba54834b6A62f55a6028" ,  "0x0AE1E8a1F59690DFA2b347e02a22f76298692b84" ,  "0x56c76BEcf5a6838d097D0d5e88d2E20FFFC47761" ,  "0x17FF5792B891e30b6d59B33fe09cc34fa1F6A33f" ,  "0xE4720557902309c04a8C8a961cF5db36Cdd93f6c" ,  "0x19116dF1A0ca91E9F96f0565861C5eB5B0699b34"  ];
   </script>
   <script src='/js/site.js'></script>
   <script>
@@ -45,7 +45,9 @@
           <hr class="bg-red" style="margin-bottom:10px;">
 
           <div>
-            "Last is me" is a lottery where the winner is the last player buying a ticket! Every square in the home page is a lottery with a duration and a ticket price as the title. <strong>If no one buy a ticket throughout the lottery duration, the last one that did it gets the jackpot!</strong> As easy as that!<br> In the square you can see also the Jackpot amount in dollars, an <a href="#howcountdown">approximate</a> countdown when the lottery expire, and the actual winner. The countdown is resetted if someone buy a ticket before the duration expires. The last winner is also updated accordingly.
+            "Last is me" is a lottery where the winner is the last player buying a ticket!<br><br> <div class="image-container bordered">
+    <div class="frame"><img src="/img/last-is-me-example-letters-small.png"></div>
+</div><br><br> Every square in the home page is a lottery with a duration and a ticket price as the title <span class="tag alert">A</span>. When you <a href="#howbuy">buy a ticket</a> you become the last player <span class="tag alert">D</span> and the countdown <span class="tag alert">C</span> is resetted. When the countdown expire, meaning none bought a ticket during the lottery duration, you get the jackpot <span class="tag alert">B</span> !
 
           </div>
           <br>
@@ -63,7 +65,7 @@
           <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
-            To buy a ticket you only need an Ether Wallet such as the ones listed in the <a href="#whicwallet">next</a> question.<br> If you have a browser enabled or an eth client on you machine with rpc port open at 8545 and account 0 unlocked (<a href="#launchgeth">example</a>), you can buy a ticket by simply pressing a button, however this is not required and if you feel more confortable you can just copy and paste the contract address (you can find it in the contract details) on your wallet with the ticket price as <a href="#extraether">amount</a> and send the transaction.
+            To buy a ticket you only need an Ether Wallet such as the ones listed in the <a href="#whicwallet">next</a> question.<br> Go in the lottery details by clicking on a square, then: <ul> <li>If you have a browser enabled or an eth client on you machine with rpc port open at 8545 and account 0 unlocked (<a href="#launchgeth">example</a>), you can buy a ticket by simply pressing a button, however this is not mandatory.</li> <li>If you don't have an eth client or if you feel more confortable not unlocking your account you can just copy and paste the contract address on your wallet with the ticket price as <a href="#extraether">amount</a> and send the transaction.</li> </ul>
 
           </div>
           <br>
@@ -157,6 +159,12 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
         <td>bitcoin & others</td>
     </tr>
     <tr>
+        <td><a href="https://changelly.com/">Changelly</a> (mail required but just for contact)</td>
+        <td><span class="mif-cross fg-red"></span></td>
+        <td>bitcoin & others</td>
+    </tr>
+
+    <tr>
         <td><a href="https://www.kraken.com/">Kraken</a></td>
         <td>USD, EUR</td>
         <td>bitcoin</td>
@@ -209,7 +217,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            Sure we have! Just share the link with <i>#&lt;your address&gt;</i> such as <i>http://lastis.me/#0xCA9dC3F33d0e1C3975300D1DcdF114B9e9c305e8</i> <br> The address is stored in the player's browser as a cookie. Then every time the player buy a ticket with a local client the house fee is shared 50% with the referrer. If the user pay the contract directly we can't share the fee with the referrer. You can also embed the lottery in your own site calling the <i>buyTicket</i> function of the contract with your own address, this way the site's owner get the referral fee for every bought ticket.
+            Sure we have! Just share the link with <i>?r=&lt;your address&gt;</i> such as <i>http://lastis.me/?r=0xCA9dC3F33d0e1C3975300D1DcdF114B9e9c305e8</i> <br> The address is stored in the player's browser as a cookie. Then every time the player buy a ticket with a local client the house fee is shared 50% with the referrer. If the user pay the contract directly we can't share the fee with the referrer. You can also embed the lottery in your own site calling the <i>buyTicket</i> function of the contract with your own address, this way the site's owner get the referral fee for every bought ticket.
 
           </div>
           <br>
@@ -236,7 +244,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            The udate of the lottery depends on how Ethereum miners find blocks. Usually they takes 14 seconds but it depends and it is not upon us.
+            The update of the lottery depends on how Ethereum miners find blocks. Usually they takes 14 seconds but it depends and it is not upon us.
 
           </div>
           <br>
