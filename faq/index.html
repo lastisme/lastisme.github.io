@@ -23,6 +23,8 @@
 
     ga('create', 'UA-64322985-7', 'auto');
     ga('send', 'pageview');
+
+    var ref=getCookie("ref");
     if(ref) {
       ga('set','dimension1',ref);
     }
