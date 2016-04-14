@@ -12,7 +12,7 @@
   <script src="/js/blockies.js"></script>
   <script src="/js/web3.min.js"></script>
   <script>
-    var MY_CONTRACTS=[ "0x84dA883d038A04a2D53Dba54834b6A62f55a6028" ,  "0x0AE1E8a1F59690DFA2b347e02a22f76298692b84" ,  "0x56c76BEcf5a6838d097D0d5e88d2E20FFFC47761" ,  "0x17FF5792B891e30b6d59B33fe09cc34fa1F6A33f" ,  "0xE4720557902309c04a8C8a961cF5db36Cdd93f6c" ,  "0x19116dF1A0ca91E9F96f0565861C5eB5B0699b34"  ];
+    var MY_CONTRACTS=[ "0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" ,  "0x0AE1E8a1F59690DFA2b347e02a22f76298692b84" ,  "0x56c76BEcf5a6838d097D0d5e88d2E20FFFC47761" ,  "0x17FF5792B891e30b6d59B33fe09cc34fa1F6A33f" ,  "0xE4720557902309c04a8C8a961cF5db36Cdd93f6c" ,  "0x19116dF1A0ca91E9F96f0565861C5eB5B0699b34"  ];
   </script>
   <script src='/js/site.js'></script>
   <script>
@@ -58,7 +58,7 @@
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            Every lottery is a smart contract written on the <a href="http://ethereum.org">Ethereum</a> platform. Execution is granted by the network and the running program is verifiable and unchangeable. In the lottery detail page there is a link to a third party site (<a href="#launchgeth">example</a>) verifying the deployed code does exactly what we explain in this pages.
+            Every lottery is a smart contract written on the <a href="http://ethereum.org">Ethereum</a> platform. Execution is granted by the network and the running program is verifiable and unchangeable. In the lottery detail page there is a link to a third party site to verify the deployed code does exactly what we explain in this page.
 
           </div>
           <br>
@@ -264,7 +264,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <hr class="bg-red" style="margin-bottom:10px;">
 
           <div>
-            <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely <strong>not mandatory</strong> and you can buy tickets copy & pasting the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
+            <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely <strong>not mandatory</strong> and you can buy tickets by copy & pasting or qr-scanning the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
 
           </div>
           <br>
@@ -273,7 +273,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
-            For example for contract <span class="tag">0x2f47E750205249D3240E1E5be41b0069eEEF1067</span> <p class="bg-grayLighter padding20 breakword"> eth.sendTransaction({from: eth.accounts[0], to: '0x2f47E750205249D3240E1E5be41b0069eEEF1067', value: web3.toWei(10, 'finney'), gas:200000, gasPrice:20000000000 }); </p>
+            For example for contract <span class="tag">0xAf396dcE15cb9E834fF9187f34f589dB22C849a8</span> <p class="bg-grayLighter padding20 breakword"> eth.sendTransaction({from: eth.accounts[0], to: '0xAf396dcE15cb9E834fF9187f34f589dB22C849a8', value: web3.toWei(10, 'finney'), gas:200000, gasPrice:20000000000 }); </p>
 
           </div>
           <br>
@@ -310,7 +310,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
     </div>
   </div>
   <br><br>
-  <div class="align-center">
+  <div class="align-center" style="max-width: 800px">
     <a class="shortcut-button" href="..">
       <span class="icon mif-home"></span>
       <span class="title">Home</span>
