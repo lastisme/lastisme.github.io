@@ -15,7 +15,6 @@
   <script>
     var MY_CONTRACTS=[ "0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" ,  "0x33A683a7Af55942220e4eFEC514dA11B5dc47996" ,  "0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" ,  "0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" ,  "0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" ,  "0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"  ];
   </script>
-  <script src='/js/site.js'></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -235,8 +234,17 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           </div>
           <br>
           
-          <a href="#gaslimit" class="nolink"><h2 id="gaslimit">I am manually forging the transaction which is the reccomended gas limit?</h2></a>
+          <a href="#unavailable" class="nolink"><h2 id="unavailable">The site is unavailable for whatever reason such as ddos</h2></a>
           <hr class="bg-red" style="margin-bottom:10px;">
+
+          <div>
+            The site is fully functional when downloaded locally. We suggest you to download a local copy. We are also working to publish it on ipfs but we have a problem when javascript code call public ethereum nodes which are not https, so it's not working right now.
+
+          </div>
+          <br>
+          
+          <a href="#gaslimit" class="nolink"><h2 id="gaslimit">I am manually forging the transaction which is the reccomended gas limit?</h2></a>
+          <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
             We reccomend to use 200k as gaslimit, however it usually requires much less. The first transaction starting a new cycle in the lottery is the more expensive, about 150k. Usually it requires around 50k.
@@ -245,7 +253,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#notupdating" class="nolink"><h2 id="notupdating">When I buy a ticket it takes a while to update</h2></a>
-          <hr class="bg-green" style="margin-bottom:10px;">
+          <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
             The update of the lottery depends on how Ethereum miners find blocks. Usually they takes 14 seconds but it depends and it is not upon us.
@@ -254,7 +262,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#couldnotunlock" class="nolink"><h2 id="couldnotunlock">Could not unlock signer account</h2></a>
-          <hr class="bg-blue" style="margin-bottom:10px;">
+          <hr class="bg-red" style="margin-bottom:10px;">
 
           <div>
             This message means that you are trying to buy the ticket automatically but you haven't unlocked account 0. See <a href="#launchgeth">"How to launch geth?"</a>
@@ -263,7 +271,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#launchgeth" class="nolink"><h2 id="launchgeth">How to launch geth?</h2></a>
-          <hr class="bg-red" style="margin-bottom:10px;">
+          <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
             <p class="bg-grayLighter padding20 breakword"> geth --rpc --rpcaddr="localhost" --rpcport="8545" --rpccorsdomain="http://lastis.me" --unlock=0 </p> You can launch geth with account 0 unlocked to buy ticket just by pressing a button. If you are not confortable, unlocking the account is absolutely <strong>not mandatory</strong> and you can buy tickets by copy & pasting or qr-scanning the contract address from the lottery detail page to your wallet. Neither having a working client on localhost is mandatory, however it's reccomended because it's faster.
@@ -272,7 +280,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#usinggeth" class="nolink"><h2 id="usinggeth">How to create the transaction from console? (using geth for example)</h2></a>
-          <hr class="bg-green" style="margin-bottom:10px;">
+          <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
             For example for contract <span class="tag">0xAf396dcE15cb9E834fF9187f34f589dB22C849a8</span> <p class="bg-grayLighter padding20 breakword"> eth.sendTransaction({from: eth.accounts[0], to: '0xAf396dcE15cb9E834fF9187f34f589dB22C849a8', value: web3.toWei(10, 'finney'), gas:200000, gasPrice:20000000000 }); </p>
@@ -281,7 +289,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#exchangewallet" class="nolink"><h2 id="exchangewallet">Can I use a wallet provided by an Exchange?</h2></a>
-          <hr class="bg-blue" style="margin-bottom:10px;">
+          <hr class="bg-red" style="margin-bottom:10px;">
 
           <div>
             <strong>Absolutely not!</strong><br> Since we are using the sender address to pay back the jackpot in case of winning you have to be sure to be in control of the sender address! Use one of the wallet listed <a href="#whicwallet">here</a>.
@@ -290,7 +298,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#fees" class="nolink"><h2 id="fees">Fees</h2></a>
-          <hr class="bg-red" style="margin-bottom:10px;">
+          <hr class="bg-green" style="margin-bottom:10px;">
 
           <div>
             The fee of the house is 1% actually. The first player restarting the lottery does not pay the house fee. The lottery owner could change the fee but no more than 2% will ever be possible as you can see from the contract code. All the rest amount, at least 98%, will partecipate to the jackpot, at least 90% to the same lottery, at most 8% could become jackpot of other "Last is me" lottery.
@@ -299,7 +307,7 @@ If you want to suggest other wallets add an <a href="https://github.com/lastisme
           <br>
           
           <a href="#doyouhavequestion" class="nolink"><h2 id="doyouhavequestion">Do you have a question not listed here?</h2></a>
-          <hr class="bg-green" style="margin-bottom:10px;">
+          <hr class="bg-blue" style="margin-bottom:10px;">
 
           <div>
             Add an issue on the github <a href="https://github.com/lastisme/lastisme.github.io/issues">repo</a> of the website or tweet our <a href="http://twitter.com/thelastisme">account</a>.
