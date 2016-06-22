@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<div id="addressIdenticon" class="addressIdenticon"></div>
+<br>
+{{ content }}
+
+
+<script>
+$(document).ready(function () {
+  var image = blockies.create({
+    seed: "{{ page.contract }}".toLowerCase(),
+    size: 8,
+    scale: 16
+  }).toDataURL();
+  console.log(image);
+  $('#addressIdenticon').css("background-image", 'url(' + image + ')');
+});
+</script>

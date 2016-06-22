@@ -1,0 +1,47 @@
+TODO last is me
+
+OK better looking date in JavaScript
+OK verify other contract are payed when setted
+OK verify history show correct data
+OK where is countdown on popup???
+OK test transfer
+OK write faqs
+KO overlay tip on things, not mobile friendly
+OK open twitter
+OK upload site on github
+OK update github link
+OK remove fb and gplus
+OK add link to verified contract on etherscan.io
+OK add actual winner in detail (do not show the address to avoid paying the last user instead of the contract, or show only partial address!)
+OK button to buy if localhost
+OK google analytics
+OK total winnings test
+OK make table of wallets
+OK retest transfer ownership
+OK could verified code contains comments, yes added a title
+OK adding method returning all contract data
+OK link to etherscan ??? how can I save tx hash???
+OK try ROUND instead of floor for title time estimation
+OK publish contract interface
+OK ether qr code
+OK change ref link
+OK remove kill when deploy for prod
+OK update faq sendTransaction example with real contract address
+OK Define price and times
+OK window refresh on countdown expiration
+OK event listener to refresh
+OK Rename js methods
+OK Title html
+OK check browser compatibility
+OK update faq example link
+OK Release blog post
+OK verify contract
+
+stand alone page for lottery details??? jquery mobile KO
+check ref from analytics
+
+REMEMBER WHEN GOING PROD
+rename home in index
+check uglify
+
+Ipo 50€ per pizza

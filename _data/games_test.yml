@@ -1,0 +1,7 @@
+---
+-
+  contract: "0x717Bc206B352dB68c53f91AA38510B4cC3af0a2A"   #10 blocks   2 minutes
+  bg: "bg-pink"
+  fg: "fg-white"
+  opposite: "bg-orange"
+  countdown: "ribbed-orange"

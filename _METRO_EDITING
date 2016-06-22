@@ -1,0 +1,2 @@
+modified countdown, removed day, h=h+d*24 to support more than 23 in hour field. added implementation in destroy
+modified css notify -> max-width was 300 now is 400

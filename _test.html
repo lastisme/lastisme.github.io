@@ -1,0 +1,32 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+
+
+  <script>
+
+
+  initProvider().then((data) => {
+    console.log(data)
+    var web3=data.web3;
+    var batch = web3.createBatch();
+    var promise = getContractDataPromiseBatch(web3,"0xa82da22d34E734eF56B4e0c4B8C20C68d196594B");
+    promise.then((data) => {
+      console.log("promise return: " + data);
+    });
+
+  });
+
+
+  </script>
+
+
+</body>
+
+
+</html>

@@ -1,44 +1,17 @@
+---
+layout: null
+---
+
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  <link  href="css/main.css" rel="stylesheet">
-  <script src="js/jquery.js"></script>
-  <script src="js/metro.min.js"></script>
-  <script src="js/blockies.js"></script>
-  <script src="js/web3.min.js"></script>
-  <script src="js/bignumber.js"></script>
-  <script src="js/site.js"></script>
-  <script>
-    var MY_CONTRACTS=[ "0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" ,  "0x33A683a7Af55942220e4eFEC514dA11B5dc47996" ,  "0xaf32279149101Fa3f6e3d1768F051593049DcD9f" ,  "0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" ,  "0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" ,  "0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" ,  "0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" ,  "0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"  ];
-  </script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-64322985-7', 'auto');
-    var ref=getCookie("ref");
-    if(ref) {
-      ga('set','dimension1',ref);
-    }
-    ga('send', 'pageview');
-
-  </script>
-
-</head>
-
+{% include head.html param="" %}
 <title>Last is me!</title>
 <body class="bg-darkCobalt">
 
   <div class="main-content clear-float">
     <div class="bg-darkCobalt no-margin padding10">
       <h1 class="fg-white">Last is me!</h1>
-      <h4 class="fg-white  opacity7">Trustless, time based lottery <a href="/faq/#howitworks">*</a></h4>
+      <h4 class="fg-white  opacity7">Trustless, time based lottery <a href="{{ site.baseurl }}/faq/#howitworks">*</a></h4>
     </div>
     <div class="tile-area no-padding">
       <div class="tile-container bg-darkCobalt" >
@@ -54,64 +27,64 @@
           </div>
         </div>
 
-        
-        <div class="tile-large bg-lighterBlue fg-white" data-role="tile"  onclick="showDialog('0xAf396dcE15cb9E834fF9187f34f589dB22C849a8')">
+        {% for game in site.data.games %}
+        <div class="tile-large {{ game.bg }} {{ game.fg }}" data-role="tile"  onclick="showDialog('{{ game.contract }}')">
           <div class="align-center">
 
             <br>
             <div>
-              <h4 class="opacity7"><span id="blockstime0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" class="v-align-bottom"></span>
+              <h4 class="opacity7"><span id="blockstime{{ game.contract }}" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
+                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price{{ game.contract }}" class="v-align-bottom"></span>
               </h4>
               <h1>
                 <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span>
+                <span class="v-align-bottom" id="jackpot{{ game.contract }}"></span>
               </h1>
-              <div id="ccont0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" class="margins">
-                <div id="countdown0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" class="countdown" data-background-color="ribbed-darkRed" >
+              <div id="ccont{{ game.contract }}" class="margins">
+                <div id="countdown{{ game.contract }}" class="countdown" data-background-color="{{ game.countdown }}" >
                 </div>
               </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></div>
-              <h4><span id="winner0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span></h4>
-              <div id="previousWinnings0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></div>
+              <div class="identicon" style="margin-left: 123px;" id="identicon{{game.contract}}"></div>
+              <h4><span id="winner{{ game.contract }}"></span></h4>
+              <div id="previousWinnings{{game.contract}}"></div>
             </div>
           </div>
           </div>
 
 
-          <div data-role="dialog" class="padding20 dialog" id="dialog0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-lighterBlue" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span> ( <span id="pblocks0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span> ( Ξ <span id="petherprice0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span> )</h2>
+          <div data-role="dialog" class="padding20 dialog" id="dialog{{ game.contract }}"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="{{ game.bg }}" data-color="{{ game.fg }}" >
+            <h2 class="opacity7"><span id="pblockstime{{ game.contract }}"></span> ( <span id="pblocks{{ game.contract }}"></span> )</h2>
+            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice{{ game.contract }}"></span> ( Ξ <span id="petherprice{{ game.contract }}"></span> )</h2>
 
             <h2>
               Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"</span>
+              <span class="v-align-bottom" id="pjackpot{{ game.contract }}"> </span> /
+              Ξ <span class="v-align-bottom" id="pjackpotether{{ game.contract }}"</span>
             </h2>
             <br>
             <div>
-              <div id="pcountdown0xAf396dcE15cb9E834fF9187f34f589dB22C849a8" class="countdown" data-background-color="ribbed-darkRed">
+              <div id="pcountdown{{ game.contract }}" class="countdown" data-background-color="{{ game.countdown }}">
             </div>
-            &nbsp;<span id="premainingblocks0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span>
+            &nbsp;<span id="premainingblocks{{ game.contract }}"></span>
             </div>
             <br>
             <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30xAf396dcE15cb9E834fF9187f34f589dB22C849a8" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0xAf396dcE15cb9E834fF9187f34f589dB22C849a8</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0xAf396dcE15cb9E834fF9187f34f589dB22C849a8')"></span></div>
+              <div class="identicon" style="float:left" data-address="{{ game.contract }}"></div>
+              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice3{{ game.contract }}" ></span> ether to:</div>
+              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">{{ game.contract }}</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('{{ game.contract }}')"></span></div>
 
             </div>
             <div class="padding10 hideifremote">
               <div style="margin-left:84px; margin-top:10px;">
                 <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-darkRed fg-white" onclick="compra('0xAf396dcE15cb9E834fF9187f34f589dB22C849a8')">Buy ticket ( Ξ <span id="petherprice20xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></span> ) </button>
+                <button class="button {{ game.opposite }} {{ game.fg }}" onclick="compra('{{ game.contract }}')">Buy ticket ( Ξ <span id="petherprice2{{ game.contract }}"></span> ) </button>
               </div>
             </div>
             <!--
             <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"></div>
+              <div class="identicon" style="float:left" data-address="{{ game.contract }}"></div>
 
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0xAf396dcE15cb9E834fF9187f34f589dB22C849a8</div>
+              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; {{ game.contract }}</div>
             </div>
             -->
 
@@ -124,571 +97,18 @@
                   <th class="fg-white align-right">Amount</th>
                 </tr>
               </thead>
-              <tbody id="ptablebody0xAf396dcE15cb9E834fF9187f34f589dB22C849a8">
+              <tbody id="ptablebody{{ game.contract }}">
 
 
               </tbody>
             </table>
 
-            <a href="http://etherscan.io/address/0xAf396dcE15cb9E834fF9187f34f589dB22C849a8#code">verified code</a>
+            <a href="http://etherscan.io/address/{{ game.contract }}#code">verified code</a>
           </div>
 
-        
-        <div class="tile-large bg-red fg-white" data-role="tile"  onclick="showDialog('0x33A683a7Af55942220e4eFEC514dA11B5dc47996')">
-          <div class="align-center">
+        {% endfor %}
 
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0x33A683a7Af55942220e4eFEC514dA11B5dc47996" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x33A683a7Af55942220e4eFEC514dA11B5dc47996" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span>
-              </h1>
-              <div id="ccont0x33A683a7Af55942220e4eFEC514dA11B5dc47996" class="margins">
-                <div id="countdown0x33A683a7Af55942220e4eFEC514dA11B5dc47996" class="countdown" data-background-color="ribbed-green" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></div>
-              <h4><span id="winner0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span></h4>
-              <div id="previousWinnings0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0x33A683a7Af55942220e4eFEC514dA11B5dc47996"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-red" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span> ( <span id="pblocks0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span> ( Ξ <span id="petherprice0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0x33A683a7Af55942220e4eFEC514dA11B5dc47996"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0x33A683a7Af55942220e4eFEC514dA11B5dc47996"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0x33A683a7Af55942220e4eFEC514dA11B5dc47996" class="countdown" data-background-color="ribbed-green">
-            </div>
-            &nbsp;<span id="premainingblocks0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x33A683a7Af55942220e4eFEC514dA11B5dc47996" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0x33A683a7Af55942220e4eFEC514dA11B5dc47996</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0x33A683a7Af55942220e4eFEC514dA11B5dc47996')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-green fg-white" onclick="compra('0x33A683a7Af55942220e4eFEC514dA11B5dc47996')">Buy ticket ( Ξ <span id="petherprice20x33A683a7Af55942220e4eFEC514dA11B5dc47996"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0x33A683a7Af55942220e4eFEC514dA11B5dc47996"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x33A683a7Af55942220e4eFEC514dA11B5dc47996</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0x33A683a7Af55942220e4eFEC514dA11B5dc47996">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0x33A683a7Af55942220e4eFEC514dA11B5dc47996#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large ribbed-magenta fg-white" data-role="tile"  onclick="showDialog('0xaf32279149101Fa3f6e3d1768F051593049DcD9f')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0xaf32279149101Fa3f6e3d1768F051593049DcD9f" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0xaf32279149101Fa3f6e3d1768F051593049DcD9f" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span>
-              </h1>
-              <div id="ccont0xaf32279149101Fa3f6e3d1768F051593049DcD9f" class="margins">
-                <div id="countdown0xaf32279149101Fa3f6e3d1768F051593049DcD9f" class="countdown" data-background-color="ribbed-lime" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></div>
-              <h4><span id="winner0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span></h4>
-              <div id="previousWinnings0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0xaf32279149101Fa3f6e3d1768F051593049DcD9f"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="ribbed-magenta" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span> ( <span id="pblocks0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span> ( Ξ <span id="petherprice0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0xaf32279149101Fa3f6e3d1768F051593049DcD9f"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0xaf32279149101Fa3f6e3d1768F051593049DcD9f"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0xaf32279149101Fa3f6e3d1768F051593049DcD9f" class="countdown" data-background-color="ribbed-lime">
-            </div>
-            &nbsp;<span id="premainingblocks0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30xaf32279149101Fa3f6e3d1768F051593049DcD9f" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0xaf32279149101Fa3f6e3d1768F051593049DcD9f</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0xaf32279149101Fa3f6e3d1768F051593049DcD9f')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-lime fg-white" onclick="compra('0xaf32279149101Fa3f6e3d1768F051593049DcD9f')">Buy ticket ( Ξ <span id="petherprice20xaf32279149101Fa3f6e3d1768F051593049DcD9f"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0xaf32279149101Fa3f6e3d1768F051593049DcD9f"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0xaf32279149101Fa3f6e3d1768F051593049DcD9f</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0xaf32279149101Fa3f6e3d1768F051593049DcD9f">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0xaf32279149101Fa3f6e3d1768F051593049DcD9f#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large bg-cobalt fg-white" data-role="tile"  onclick="showDialog('0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span>
-              </h1>
-              <div id="ccont0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" class="margins">
-                <div id="countdown0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" class="countdown" data-background-color="ribbed-orange" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></div>
-              <h4><span id="winner0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span></h4>
-              <div id="previousWinnings0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-cobalt" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span> ( <span id="pblocks0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span> ( Ξ <span id="petherprice0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" class="countdown" data-background-color="ribbed-orange">
-            </div>
-            &nbsp;<span id="premainingblocks0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-orange fg-white" onclick="compra('0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41')">Buy ticket ( Ξ <span id="petherprice20xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0xCB3Ae1fcb86d208D688dA935A463aecff8EAeb41#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large ribbed-darkIndigo fg-white" data-role="tile"  onclick="showDialog('0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span>
-              </h1>
-              <div id="ccont0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" class="margins">
-                <div id="countdown0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" class="countdown" data-background-color="ribbed-yellow" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></div>
-              <h4><span id="winner0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span></h4>
-              <div id="previousWinnings0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="ribbed-darkIndigo" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span> ( <span id="pblocks0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span> ( Ξ <span id="petherprice0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" class="countdown" data-background-color="ribbed-yellow">
-            </div>
-            &nbsp;<span id="premainingblocks0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-yellow fg-white" onclick="compra('0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF')">Buy ticket ( Ξ <span id="petherprice20x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0x5D9B8FA00C16BCafaE47Deed872E919C8F6535BF#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large bg-yellow fg-white" data-role="tile"  onclick="showDialog('0xBE8EB2544083691C76F113eD36bc45e3fFe969F5')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span>
-              </h1>
-              <div id="ccont0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" class="margins">
-                <div id="countdown0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" class="countdown" data-background-color="ribbed-orange" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></div>
-              <h4><span id="winner0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span></h4>
-              <div id="previousWinnings0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-yellow" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span> ( <span id="pblocks0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span> ( Ξ <span id="petherprice0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0xBE8EB2544083691C76F113eD36bc45e3fFe969F5" class="countdown" data-background-color="ribbed-orange">
-            </div>
-            &nbsp;<span id="premainingblocks0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30xBE8EB2544083691C76F113eD36bc45e3fFe969F5" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0xBE8EB2544083691C76F113eD36bc45e3fFe969F5</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0xBE8EB2544083691C76F113eD36bc45e3fFe969F5')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-orange fg-white" onclick="compra('0xBE8EB2544083691C76F113eD36bc45e3fFe969F5')">Buy ticket ( Ξ <span id="petherprice20xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0xBE8EB2544083691C76F113eD36bc45e3fFe969F5"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0xBE8EB2544083691C76F113eD36bc45e3fFe969F5</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0xBE8EB2544083691C76F113eD36bc45e3fFe969F5">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0xBE8EB2544083691C76F113eD36bc45e3fFe969F5#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large bg-darkGreen fg-white" data-role="tile"  onclick="showDialog('0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span>
-              </h1>
-              <div id="ccont0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" class="margins">
-                <div id="countdown0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" class="countdown" data-background-color="ribbed-red" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></div>
-              <h4><span id="winner0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span></h4>
-              <div id="previousWinnings0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-darkGreen" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span> ( <span id="pblocks0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span> ( Ξ <span id="petherprice0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" class="countdown" data-background-color="ribbed-red">
-            </div>
-            &nbsp;<span id="premainingblocks0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-red fg-white" onclick="compra('0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4')">Buy ticket ( Ξ <span id="petherprice20x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0x664a2f27c4b6a778C5FaC601Ba2afc1D4D1adCA4#code">verified code</a>
-          </div>
-
-        
-        <div class="tile-large bg-pink fg-white" data-role="tile"  onclick="showDialog('0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7')">
-          <div class="align-center">
-
-            <br>
-            <div>
-              <h4 class="opacity7"><span id="blockstime0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" class="v-align-bottom"></span> <span class="v-align-bottom">/</span>
-                <span class="icon mif-dollar2 v-align-bottom"></span> <span id="price0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" class="v-align-bottom"></span>
-              </h4>
-              <h1>
-                <span class="icon mif-dollar2 v-align-bottom"></span>
-                <span class="v-align-bottom" id="jackpot0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span>
-              </h1>
-              <div id="ccont0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" class="margins">
-                <div id="countdown0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" class="countdown" data-background-color="ribbed-orange" >
-                </div>
-              </div>
-              <div class="identicon" style="margin-left: 123px;" id="identicon0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></div>
-              <h4><span id="winner0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span></h4>
-              <div id="previousWinnings0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></div>
-            </div>
-          </div>
-          </div>
-
-
-          <div data-role="dialog" class="padding20 dialog" id="dialog0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"	data-overlay="true"  data-overlay-color="op-dark" data-overlay-click-close="true"  data-background="bg-pink" data-color="fg-white" >
-            <h2 class="opacity7"><span id="pblockstime0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span> ( <span id="pblocks0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span> )</h2>
-            <h2 class="opacity7"><span class="icon mif-dollar2"></span> <span id="pprice0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span> ( Ξ <span id="petherprice0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span> )</h2>
-
-            <h2>
-              Jackpot: <span class="icon mif-dollar2 v-align-bottom"></span>
-              <span class="v-align-bottom" id="pjackpot0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"> </span> /
-              Ξ <span class="v-align-bottom" id="pjackpotether0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"</span>
-            </h2>
-            <br>
-            <div>
-              <div id="pcountdown0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" class="countdown" data-background-color="ribbed-orange">
-            </div>
-            &nbsp;<span id="premainingblocks0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span>
-            </div>
-            <br>
-            <div class="padding10"> <!-- hideiflocal -->
-              <div class="identicon" style="float:left" data-address="0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></div>
-              <div class="padding10" style="margin-left:74px">Buy a ticket sending <span id="petherprice30x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7" ></span> ether to:</div>
-              <div style="margin-left:84px"><span class="icon mif-key v-align-bottom"></span>&nbsp;&nbsp;<span class="tag">0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7</span>&nbsp;&nbsp;<span class="icon mif-qrcode v-align-bottom" onclick="qr('0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7')"></span></div>
-
-            </div>
-            <div class="padding10 hideifremote">
-              <div style="margin-left:84px; margin-top:10px;">
-                <span>Or press the button</span>&nbsp;&nbsp;
-                <button class="button bg-orange fg-white" onclick="compra('0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7')">Buy ticket ( Ξ <span id="petherprice20x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></span> ) </button>
-              </div>
-            </div>
-            <!--
-            <div class="padding10 hideifremote">
-              <div class="identicon" style="float:left" data-address="0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7"></div>
-
-              <div style="margin-left:84px; margin-top:10px;"><span class="icon mif-key v-align-bottom"></span>&nbsp; 0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7</div>
-            </div>
-            -->
-
-            <br>
-            <table class="table" id="main_table_demo">
-              <thead>
-                <tr>
-                  <th class="fg-white">Date</th>
-                  <th class="fg-white">Winner</th>
-                  <th class="fg-white align-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="ptablebody0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7">
-
-
-              </tbody>
-            </table>
-
-            <a href="http://etherscan.io/address/0x6f2e48F1f29D1eEfC5e512009874e8Cf1b1085c7#code">verified code</a>
-          </div>
-
-        
-
-        <a href="/faq">
+        <a href="{{ site.baseurl }}/faq">
           <div class="tile bg-green fg-white" data-role="tile">
             <div class="tile-content iconic">
               <span class="icon mif-question "></span>
@@ -698,7 +118,7 @@
           </div>
         </a>
 
-        <a href="https://twitter.com/thelastisme">
+        <a href="https://twitter.com/{{ site.twitter_username }}">
           <div class="tile-small bg-cyan fg-white" >
             <div class="tile-content iconic">
               <span class="icon mif-twitter"></span>
@@ -710,7 +130,7 @@
             <span class="icon mif-facebook"></span>
           </div>
         </div>-->
-        <a href="https://github.com/lastisme/lastisme.github.io">
+        <a href="{{ site.github.repo }}">
           <div class="tile-small bg-darkViolet fg-white" data-role="tile">
             <div class="tile-content iconic">
               <span class="icon mif-github"></span>
@@ -741,7 +161,7 @@
       </div>
     </div>
     <div class="bg-darkCobalt no-margin padding10 align-center">
-      <p class="fg-white opacity7"><span id="provider"></span> #<span id="blockNumber"></span> <a href="/faq/#whatsfooter">*</a></p><br>
+      <p class="fg-white opacity7"><span id="provider"></span> #<span id="blockNumber"></span> <a href="{{ site.baseurl }}/faq/#whatsfooter">*</a></p><br>
     </div>
   </div>
   <script id="cid0020000120952032876" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 311px;height: 277px;">{"handle":"lastisme","arch":"js","styles":{"a":"f2a207","b":100,"c":"FFFFFF","d":"FFFFFF","k":"f2a207","l":"f2a207","m":"f2a207","n":"FFFFFF","p":"10","q":"f2a207","r":100,"pos":"br","cv":1,"cvbg":"f2a207","cvw":200,"cvh":30,"ticker":1,"fwtickm":1}}</script>

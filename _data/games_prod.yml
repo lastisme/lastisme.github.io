@@ -1,0 +1,37 @@
+---
+-
+  contract: "0xAf396dcE15cb9E834fF9187f34f589dB22C849a8"  #6000 blocks 23 hours
+  bg: "bg-lighterBlue"
+  fg: "fg-white"
+  opposite: "bg-darkRed"
+  countdown: "ribbed-darkRed"
+-
+  contract: "0x0AE1E8a1F59690DFA2b347e02a22f76298692b84"  #3000 blocks 12 hours
+  bg: "bg-red"
+  fg: "fg-white"
+  opposite: "bg-green"
+  countdown: "ribbed-green"
+-
+  contract: "0x56c76BEcf5a6838d097D0d5e88d2E20FFFC47761"  #250 blocks 1 hour
+  bg: "bg-cobalt"
+  fg: "fg-white"
+  opposite: "bg-orange"
+  countdown: "ribbed-orange"
+-
+  contract: "0x17FF5792B891e30b6d59B33fe09cc34fa1F6A33f"  #40 blocks 10 minutes
+  bg: "bg-yellow"
+  fg: "fg-white"
+  opposite: "bg-orange"
+  countdown: "ribbed-orange"
+-
+  contract: "0xE4720557902309c04a8C8a961cF5db36Cdd93f6c"   #20 blocks  5 minutes
+  bg: "bg-darkGreen"
+  fg: "fg-white"
+  opposite: "bg-red"
+  countdown: "ribbed-red"
+-
+  contract: "0x19116dF1A0ca91E9F96f0565861C5eB5B0699b34"   #10 blocks   2 minutes
+  bg: "bg-pink"
+  fg: "fg-white"
+  opposite: "bg-orange"
+  countdown: "ribbed-orange"

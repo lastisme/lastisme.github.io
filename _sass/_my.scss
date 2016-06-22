@@ -1,0 +1,43 @@
+.identicon {
+  width:64px;
+  height:64px;
+  background-size:cover;
+  background-repeat:no-repeat;
+  border-radius:50%;
+  box-shadow:inset 0 2px 2px hsla(0,0%,100%,.5),inset 0 -1px 8px rgba(0,0,0,.6)
+}
+.opacity7 {
+  opacity:0.7;
+}
+
+a.nolink {
+color: inherit;
+}
+
+a.nolink:link {
+color: inherit;
+text-decoration: none;
+}
+
+a.nolink:hover {
+color: inherit;
+text-decoration: none;
+}
+a.nolink:visited {
+color: inherit;
+text-decoration: none;
+}
+
+.breakword {
+  word-wrap: break-word
+}
+
+.margins {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.biggerh1 {
+  font-size: 3rem;
+  padding-top: 10px;
+}
