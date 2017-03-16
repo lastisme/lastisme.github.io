@@ -732,8 +732,10 @@ function makeRequest (opts) {
         return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
       }).join('&');
     }
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.setRequestHeader("Content-type", "application/json")
+    if(opts['url'].indexOf('localhost')>0) {
+      xhr.setRequestHeader('Accept', 'application/json');
+      xhr.setRequestHeader("Content-type", "application/json")
+    }
     xhr.send(params);
   });
 }
