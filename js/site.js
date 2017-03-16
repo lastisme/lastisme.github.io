@@ -733,6 +733,7 @@ function makeRequest (opts) {
       }).join('&');
     }
     xhr.setRequestHeader('Accept', 'application/json');
+    xhr.setRequestHeader("Content-type", "application/json")
     xhr.send(params);
   });
 }
