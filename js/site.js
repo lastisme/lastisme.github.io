@@ -732,6 +732,7 @@ function makeRequest (opts) {
         return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
       }).join('&');
     }
+    xhr.setRequestHeader('Accept', 'application/json');
     xhr.send(params);
   });
 }
@@ -1050,4 +1051,3 @@ $(document).ready(function () {
   })
 
 });
-
